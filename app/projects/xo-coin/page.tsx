@@ -61,7 +61,7 @@ export default function XOCoinPage() {
           {/* Rake to Liquidity System */}
           <section className="mb-12">
             <h2 className="text-3xl font-bold text-amber-500 mb-6">Innovative Rake Collection System</h2>
-            <Card className="bg-gradient-to-br from-amber-500/10 to-yellow-500/5 border-2 border-amber-500">
+            <Card className="bg-gradient-to-br from-amber-500/10 to-blue-500/5 border-2 border-amber-500">
               <CardContent className="p-8">
                 <div className="flex items-start gap-4 mb-6">
                   <Droplet className="w-16 h-16 text-amber-500 flex-shrink-0" />
