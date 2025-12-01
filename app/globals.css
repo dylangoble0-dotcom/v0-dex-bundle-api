@@ -1,91 +1,75 @@
+/* ========================================================================== */
+/*                         XO DEVELOPMENT – GLOBAL STYLES                    */
+/* ========================================================================== */
+
+/* Tailwind Layers */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* --------------------------------------------
-   DEFAULT THEME — BLACK + GOLD
--------------------------------------------- */
-
-:root {
-  --background: #000000;
-  --foreground: #f8ca67;
-
-  --card: #000000;
-  --card-foreground: #f8ca67;
-
-  --popover: #000000;
-  --popover-foreground: #f8ca67;
-
-  --primary: #f8ca67;
-  --primary-foreground: #000000;
-
-  --secondary: #f8ca67;
-  --secondary-foreground: #000000;
-
-  --muted: #1a1a1a;
-  --muted-foreground: #c2a86b;
-
-  --accent: #f8ca67;
-  --accent-foreground: #000000;
-
-  --destructive: #a30000;
-  --destructive-foreground: #ffffff;
-
-  --border: #3d2a00;
-  --input: #1a1a1a;
-  --ring: #f8ca67;
-
-  --radius: 0.5rem;
-}
-
-/* --------------------------------------------
-   FORCE DARK MODE ALWAYS
--------------------------------------------- */
+/* ========================================================================== */
+/*                                 ROOT THEME                                 */
+/* ========================================================================== */
 
 html,
 body {
-  background-color: #000 !important;
-  color: var(--foreground) !important;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #0a0a0a; /* Deep dark slate */
+  color: #e5e5e5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* --------------------------------------------
-   FIX WHITE BOXES GLOBALLY
--------------------------------------------- */
-
+/* Disable blue highlight on mobile */
 * {
-  background-color: transparent !important;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Remove white backgrounds on inputs */
-input,
-textarea,
-select {
-  background-color: #000 !important;
-  border-color: #3d2a00 !important;
-  color: #f8ca67 !important;
+/* ========================================================================== */
+/*                          RESET BROWSER ARTIFACTS                           */
+/* ========================================================================== */
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
 }
 
-/* Buttons */
-button {
-  background-color: #f8ca67;
-  color: #000;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
-button:hover {
-  background-color: #d6a94f;
+/* Make sure nothing in the UI renders default white */
+* {
+  background-color: transparent;
+  border-color: inherit;
 }
 
-/* Cards */
-[data-slot="card"] {
-  background-color: #000 !important;
-  border: 1px solid #6b4b00 !important;
-  color: var(--foreground);
+/* ========================================================================== */
+/*                        CARD + SECTION GLOBAL CLEANUP                       */
+/* ========================================================================== */
+
+/* Remove white boxes behind Card components */
+.card,
+.card * {
+  background: transparent !important;
 }
 
-/* Remove weird shadows */
-.shadow,
-.shadow-sm,
-.shadow-md,
-.shadow-lg {
-  box-shadow: none !important;
+/* Force consistent dark card theme */
+.card-dark {
+  background: rgba(15, 23, 42, 0.5) !important; /* slate-900/50 */
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(251, 191, 36, 0.25); /* amber border */
+}
+
+/* Smooth global transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
