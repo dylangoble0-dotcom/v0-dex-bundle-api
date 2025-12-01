@@ -1,19 +1,21 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "XO Development | Locust Protocol DEX API",
-  description: "XO Development offers Locust Protocol - a unified DEX aggregation API for multi-chain swaps, wallet management, AI assistance, and DeFi data. Try free for 7 days.",
+  title: "XO Development | Locust Ecosystem Projects",
+  description:
+    "XO Development - Building the future with Locust Protocol cloud automation, Locust Wireless eSIMs, XO Coin DeFi, and Locust Technology innovations.",
   generator: "XO Development",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_API_URL || 'https://xo-development.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_API_URL || "https://xodevelopment.com"),
   openGraph: {
-    title: "XO Development | Locust Protocol DEX API",
-    description: "Unified DEX aggregation API for multi-chain swaps, wallet management, and DeFi data. Try Locust Protocol free for 7 days.",
+    title: "XO Development | Locust Ecosystem Projects",
+    description:
+      "Vision is the art of seeing what is invisible to others. Explore our portfolio of innovative technology projects.",
     images: [
       {
         url: "/xo-logo.png",
@@ -27,8 +29,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "XO Development | Locust Protocol DEX API",
-    description: "Unified DEX aggregation API for multi-chain swaps, wallet management, and DeFi data. Try Locust Protocol free for 7 days.",
+    title: "XO Development | Locust Ecosystem Projects",
+    description:
+      "Vision is the art of seeing what is invisible to others. Explore our portfolio of innovative technology projects.",
     images: ["/xo-logo.png"],
   },
   icons: {

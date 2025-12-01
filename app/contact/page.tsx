@@ -1,160 +1,142 @@
-"use client"
-
-import type React from "react"
-
-import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Mail, Clock, MessageSquare, Home } from 'lucide-react'
-import { Alert, AlertDescription } from "@/components/ui/alert"
 import Link from "next/link"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Mail, MapPin, Phone } from "lucide-react"
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // In production, this would send to your support system
-    console.log("Contact form submitted:", formData)
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: "", email: "", subject: "", message: "" })
-    }, 3000)
-  }
-
   return (
-    <div className="min-h-screen bg-background">
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <Link href="/">
-          <Button variant="outline" className="mb-4 bg-transparent">
-            <Home className="mr-2 h-4 w-4" />
-            Return to Homepage
-          </Button>
-        </Link>
-
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-4">Contact Support</h1>
-          <p className="text-xl text-muted-foreground">We're here to help. Reach out with any questions or concerns.</p>
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      <header className="border-b border-slate-800 bg-slate-950/80 backdrop-blur-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3">
+            <Image src="/xo-logo.png" alt="XO Logo" width={40} height={40} />
+            <span className="text-xl font-bold text-amber-500">LOCUST ECOSYSTEM</span>
+          </Link>
+          <Link href="/">
+            <Button variant="outline" className="border-amber-500 text-amber-500 hover:bg-amber-500/10 bg-transparent">
+              Back to Home
+            </Button>
+          </Link>
         </div>
+      </header>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {/* Contact Form */}
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle>Send us a message</CardTitle>
-              <CardDescription>We'll get back to you within 24 hours</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {submitted && (
-                <Alert className="mb-4 border-green-500 bg-green-50">
-                  <AlertDescription className="text-green-800">Thank you! We'll be in touch soon.</AlertDescription>
-                </Alert>
-              )}
+      <div className="container mx-auto px-4 py-16 max-w-6xl">
+        <h1 className="text-4xl font-bold text-amber-500 mb-4 text-center">Contact Us</h1>
+        <p className="text-slate-300 text-lg text-center mb-12">Get in touch with the Locust Ecosystem team</p>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                  />
-                </div>
+        <div className="grid md:grid-cols-2 gap-8">
+          <div>
+            <Card className="bg-slate-900/50 border-2 border-amber-500/30 backdrop-blur-sm mb-8">
+              <CardHeader>
+                <CardTitle className="text-2xl text-amber-500">Send us a message</CardTitle>
+                <CardDescription className="text-slate-300">
+                  Fill out the form and we'll get back to you as soon as possible.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form action="/api/contact" method="POST" className="space-y-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-4 py-2 bg-slate-950/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-amber-500"
+                      placeholder="John Doe"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-2 bg-slate-950/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-amber-500"
+                      placeholder="john@example.com"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-2">
+                      Company / Organization
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      className="w-full px-4 py-2 bg-slate-950/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-amber-500"
+                      placeholder="Acme Corp"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={5}
+                      className="w-full px-4 py-2 bg-slate-950/50 border border-slate-700 rounded-lg text-slate-100 focus:outline-none focus:border-amber-500 resize-none"
+                      placeholder="Your message here..."
+                    />
+                  </div>
+                  <Button
+                    type="submit"
+                    className="w-full bg-amber-500 text-slate-950 hover:bg-amber-400 font-semibold py-3"
+                  >
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input
-                    id="subject"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                  />
-                </div>
-
-                <Button type="submit" className="w-full bg-[#c87642] hover:bg-[#b86632]">
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          {/* Contact Information */}
           <div className="space-y-6">
-            <Card className="border-primary/20">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Mail className="h-5 w-5 text-[#c87642]" />
-                  Email Support
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <a href="mailto:support@XOdevelopment.com" className="text-[#c87642] hover:underline">
-                  support@XOdevelopment.com
-                </a>
-                <p className="text-sm text-muted-foreground mt-2">For technical support and general inquiries</p>
+            <Card className="bg-slate-900/50 border-2 border-amber-500/30 backdrop-blur-sm">
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-4">
+                  <Mail className="w-6 h-6 text-amber-500 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-amber-500 mb-1">Email</h3>
+                    <p className="text-slate-300">Contact us via the investor inquiry form</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-[#c87642]" />
-                  Business Hours
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
-                <p className="text-sm text-muted-foreground mt-2">We typically respond within 24 hours</p>
+            <Card className="bg-slate-900/50 border-2 border-amber-500/30 backdrop-blur-sm">
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-4">
+                  <MapPin className="w-6 h-6 text-amber-500 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-amber-500 mb-1">Location</h3>
+                    <p className="text-slate-300">Operating globally with distributed teams</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <MessageSquare className="h-5 w-5 text-[#c87642]" />
-                  Community Forum
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Join our community forum to connect with other developers
-                </p>
-                <Button variant="outline" className="w-full bg-transparent" asChild>
-                  <a href="/community">Visit Community</a>
-                </Button>
+            <Card className="bg-slate-900/50 border-2 border-amber-500/30 backdrop-blur-sm">
+              <CardContent className="pt-6">
+                <div className="flex items-start gap-4">
+                  <Phone className="w-6 h-6 text-amber-500 mt-1" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-amber-500 mb-1">Projects</h3>
+                    <ul className="text-slate-300 space-y-1">
+                      <li>• Locust Protocol - Cloud Infrastructure</li>
+                      <li>• Locust Wireless - eSIM & Hosting</li>
+                      <li>• XO Coin - Solana Gaming</li>
+                      <li>• Locust Technology - Confidential</li>
+                    </ul>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>

@@ -7,14 +7,14 @@
 :root {
   --background: oklch(1 0 0); /* White */
   --foreground: oklch(0.25 0.08 250); /* Navy Blue */
-  --card: oklch(1 0 0); /* White */
+  --card: oklch(1 0 0); /* Navy Blue */
   --card-foreground: oklch(0.25 0.08 250); /* Navy Blue */
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.08 250);
   --primary: oklch(0.25 0.08 250); /* Navy Blue */
-  --primary-foreground: oklch(1 0 0); /* White */
+  --primary-foreground: oklch(1 0 0); /* Navy Blue */
   --secondary: oklch(0.58 0.15 35); /* Metallic Copper */
-  --secondary-foreground: oklch(1 0 0); /* White */
+  --secondary-foreground: oklch(1 0 0); /* Navy Blue */
   --muted: oklch(0.96 0.01 250); /* Light blue-gray */
   --muted-foreground: oklch(0.5 0.05 250);
   --accent: oklch(0.58 0.15 35); /* Metallic Copper */
@@ -47,7 +47,7 @@
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.2 0.03 250);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.98 0 0); /* White */
+  --primary: oklch(0.98 0 0); /* Navy Blue */
   --primary-foreground: oklch(0.25 0.08 250); /* Navy */
   --secondary: oklch(0.58 0.15 35); /* Metallic Copper */
   --secondary-foreground: oklch(1 0 0);
@@ -91,10 +91,10 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-foreground: * Navy Blue *(--accent-foreground);
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
+  --color-destructive-foreground: * Navy Blue *(--destructive-foreground);
+  --color-border: * Metallic Copper *(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-chart-1: var(--chart-1);
