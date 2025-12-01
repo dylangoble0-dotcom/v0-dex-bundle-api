@@ -1,136 +1,91 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@custom-variant dark (&:is(.dark *));
-
-/* =======================================
-   COLOR SYSTEM — Navy, White, Copper
-   ======================================= */
+/* --------------------------------------------
+   DEFAULT THEME — BLACK + GOLD
+-------------------------------------------- */
 
 :root {
-  /* Base Colors */
-  --navy: oklch(0.25 0.08 250);
-  --navy-light: oklch(0.30 0.06 250);
-  --navy-dark: oklch(0.18 0.04 250);
-  --white: oklch(1 0 0);
-  --copper: oklch(0.58 0.15 35);
+  --background: #000000;
+  --foreground: #f8ca67;
 
-  /* App Background */
-  --background: var(--white);
-  --foreground: var(--navy);
+  --card: #000000;
+  --card-foreground: #f8ca67;
 
-  /* Surfaces */
-  --card: var(--navy-light);
-  --card-foreground: var(--white);
+  --popover: #000000;
+  --popover-foreground: #f8ca67;
 
-  --popover: var(--navy-light);
-  --popover-foreground: var(--white);
+  --primary: #f8ca67;
+  --primary-foreground: #000000;
 
-  /* Primary */
-  --primary: var(--navy);
-  --primary-foreground: var(--white);
+  --secondary: #f8ca67;
+  --secondary-foreground: #000000;
 
-  /* Secondary */
-  --secondary: var(--copper);
-  --secondary-foreground: var(--white);
+  --muted: #1a1a1a;
+  --muted-foreground: #c2a86b;
 
-  /* Muted */
-  --muted: oklch(0.96 0.01 250);
-  --muted-foreground: oklch(0.5 0.05 250);
+  --accent: #f8ca67;
+  --accent-foreground: #000000;
 
-  /* Accent */
-  --accent: var(--copper);
-  --accent-foreground: var(--white);
+  --destructive: #a30000;
+  --destructive-foreground: #ffffff;
 
-  /* Status / Danger */
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: var(--white);
+  --border: #3d2a00;
+  --input: #1a1a1a;
+  --ring: #f8ca67;
 
-  /* Borders / Inputs */
-  --border: oklch(0.88 0.01 250);
-  --input: oklch(0.9 0.01 250);
-  --ring: var(--copper);
-
-  /* Charts */
-  --chart-1: var(--copper);
-  --chart-2: var(--navy);
-  --chart-3: oklch(0.6 0.118 184.704);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-
-  /* Radius */
-  --radius: 0.625rem;
-
-  /* Sidebar */
-  --sidebar: var(--navy-light);
-  --sidebar-foreground: var(--white);
-  --sidebar-primary: var(--copper);
-  --sidebar-primary-foreground: var(--white);
-  --sidebar-accent: var(--navy);
-  --sidebar-accent-foreground: var(--white);
-  --sidebar-border: oklch(0.3 0.03 250);
-  --sidebar-ring: var(--copper);
+  --radius: 0.5rem;
 }
 
-/* =======================================
-   DARK MODE — Full Navy Theme
-   ======================================= */
+/* --------------------------------------------
+   FORCE DARK MODE ALWAYS
+-------------------------------------------- */
 
-.dark {
-  --background: var(--navy-dark);
-  --foreground: var(--white);
-
-  --card: var(--navy);
-  --card-foreground: var(--white);
-
-  --popover: var(--navy);
-  --popover-foreground: var(--white);
-
-  --primary: var(--white);
-  --primary-foreground: var(--navy);
-
-  --secondary: var(--copper);
-  --secondary-foreground: var(--white);
-
-  --muted: oklch(0.25 0.03 250);
-  --muted-foreground: oklch(0.7 0.02 250);
-
-  --accent: var(--copper);
-  --accent-foreground: var(--white);
-
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: var(--white);
-
-  --border: oklch(0.3 0.03 250);
-  --input: oklch(0.3 0.03 250);
-  --ring: var(--copper);
-
-  --chart-1: var(--copper);
-  --chart-2: oklch(0.4 0.1 250);
-  --chart-3: oklch(0.696 0.17 162.48);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-
-  --sidebar: var(--navy);
-  --sidebar-foreground: var(--white);
-  --sidebar-primary: var(--copper);
-  --sidebar-primary-foreground: var(--white);
-  --sidebar-accent: var(--navy-light);
-  --sidebar-accent-foreground: var(--white);
-  --sidebar-border: oklch(0.3 0.03 250);
-  --sidebar-ring: var(--copper);
+html,
+body {
+  background-color: #000 !important;
+  color: var(--foreground) !important;
 }
 
-/* =======================================
-   BASE STYLE LAYER
-   ======================================= */
+/* --------------------------------------------
+   FIX WHITE BOXES GLOBALLY
+-------------------------------------------- */
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+* {
+  background-color: transparent !important;
+}
 
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Remove white backgrounds on inputs */
+input,
+textarea,
+select {
+  background-color: #000 !important;
+  border-color: #3d2a00 !important;
+  color: #f8ca67 !important;
+}
+
+/* Buttons */
+button {
+  background-color: #f8ca67;
+  color: #000;
+}
+
+button:hover {
+  background-color: #d6a94f;
+}
+
+/* Cards */
+[data-slot="card"] {
+  background-color: #000 !important;
+  border: 1px solid #6b4b00 !important;
+  color: var(--foreground);
+}
+
+/* Remove weird shadows */
+.shadow,
+.shadow-sm,
+.shadow-md,
+.shadow-lg {
+  box-shadow: none !important;
 }
