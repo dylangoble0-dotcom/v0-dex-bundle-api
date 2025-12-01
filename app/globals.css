@@ -1,31 +1,70 @@
-/* --- GLOBAL RESET --- */
+/* app/globals.css
+   Tailwind base + safe resets
+   Replace your current file with this exact content
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- Safe global reset (non-destructive) --- */
 * {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-/* Smooth, predictable layout */
-html, body {
-  width: 100%;
-  min-height: 100%;
-  background: #000000;
+  background-color: #000; /* Deep black base */
   color: #f5f5f5;
-  font-family: "Inter", system-ui, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
-/* Links (no forced color – components handle that) */
-a {
-  text-decoration: none;
-  color: inherit;
+/* Allow components to set their own backgrounds safely */
+:root {
+  --bg-0: #000000;
+  --bg-1: #070709;
+  --card-bg: #0b0b0b;
+  --gold: #d4af37;
+  --neon: #2dd4ff;
+  --muted: #9a9a9a;
+  --radius: 12px;
+  --container-max: 1100px;
 }
 
-/* Images must never stretch incorrectly */
+/* Utility: center container */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Make images behave predictably */
 img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
-  border-radius: 6px;
+  border-style: none;
+}
+
+/* Keep default link behavior but don't force color */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Keep accessible focus outline but subtle */
+:focus {
+  outline: 3px solid rgba(45, 212, 255, 0.12);
+  outline-offset: 2px;
 }
