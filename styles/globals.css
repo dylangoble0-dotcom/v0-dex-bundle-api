@@ -3,49 +3,50 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* ================================
-   COLOR SYSTEM — FIXED & CLEANED
-   Navy, White, Metallic Copper
-   ================================ */
+/* =======================================
+   COLOR SYSTEM — Navy, White, Copper
+   ======================================= */
 
 :root {
-  /* Core Palette */
+  /* Base Colors */
   --navy: oklch(0.25 0.08 250);
   --navy-light: oklch(0.30 0.06 250);
   --navy-dark: oklch(0.18 0.04 250);
   --white: oklch(1 0 0);
   --copper: oklch(0.58 0.15 35);
 
-  /* Background System */
+  /* App Background */
   --background: var(--white);
   --foreground: var(--navy);
 
   /* Surfaces */
-  --card: var(--navy-light); 
+  --card: var(--navy-light);
   --card-foreground: var(--white);
+
   --popover: var(--navy-light);
   --popover-foreground: var(--white);
 
-  /* Brand */
+  /* Primary */
   --primary: var(--navy);
   --primary-foreground: var(--white);
 
+  /* Secondary */
   --secondary: var(--copper);
   --secondary-foreground: var(--white);
 
-  /* Muted / Subtle */
+  /* Muted */
   --muted: oklch(0.96 0.01 250);
   --muted-foreground: oklch(0.5 0.05 250);
 
-  /* Accents */
+  /* Accent */
   --accent: var(--copper);
   --accent-foreground: var(--white);
 
-  /* Status */
+  /* Status / Danger */
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: var(--white);
 
-  /* Forms */
+  /* Borders / Inputs */
   --border: oklch(0.88 0.01 250);
   --input: oklch(0.9 0.01 250);
   --ring: var(--copper);
@@ -57,7 +58,7 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
 
-  /* Layout */
+  /* Radius */
   --radius: 0.625rem;
 
   /* Sidebar */
@@ -71,9 +72,9 @@
   --sidebar-ring: var(--copper);
 }
 
-/* ================================
-   DARK MODE — FIXED
-   ================================ */
+/* =======================================
+   DARK MODE — Full Navy Theme
+   ======================================= */
 
 .dark {
   --background: var(--navy-dark);
@@ -120,71 +121,15 @@
   --sidebar-ring: var(--copper);
 }
 
-/* ================================
-   TAILWIND THEME MAPPING — FIXED
-   ================================ */
-
-@theme inline {
-  --font-sans: "Geist", "Geist Fallback";
-  --font-mono: "Geist Mono", "Geist Mono Fallback";
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
-/* ================================
-   BASE LAYER
-   ================================ */
+/* =======================================
+   BASE STYLE LAYER
+   ======================================= */
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
